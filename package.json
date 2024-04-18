@@ -1,7 +1,7 @@
 {
   "name": "naive-ui",
-  "version": "2.38.1",
-  "description": "A Vue 3 Component Library. Fairly Complete, Theme Customizable, Uses TypeScript, Fast",
+  "version": "2.38.2",
+  "description": "Some changes i made to fix some problems with the original naive ui package",
   "main": "lib/index.js",
   "module": "es/index.mjs",
   "types": "es/index.d.ts",
@@ -30,7 +30,7 @@
     "transpile-docs": "node scripts/md-to-vue data-table",
     "release:site": "TUSIMPLE=true pnpm run build:site && node build-doc/generate-deploy-sh.js && sudo bash build-doc/deploy-doc.sh"
   },
-  "author": "07akioni",
+  "author": "gustavo003",
   "license": "MIT",
   "files": [
     "es",
