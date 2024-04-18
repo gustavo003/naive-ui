@@ -18,7 +18,7 @@ module.exports = {
       process.env.NODE_ENV !== 'production'
         ? [
             {
-              find: 'naive-ui',
+              find: 'naive-ui-custom',
               replacement: path.resolve(__dirname, './src')
             }
           ]
