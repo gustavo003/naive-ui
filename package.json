@@ -1,5 +1,5 @@
 {
-  "name": "naive-ui/custom-fix",
+  "name": "naive-ui-custom",
   "version": "2.38.2",
   "description": "Some changes i made to fix some problems with the original naive ui package",
   "main": "lib/index.js",
