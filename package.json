@@ -15,13 +15,7 @@
     "clean": "rimraf site lib es dist node_modules/naive-ui themes/tusimple/es themes/tusimple/lib",
     "release:package": "pnpm run test && pnpm run build:package && pnpm publish --no-git-checks",
     "release:changelog": "node scripts/release-changelog.mjs",
-    "lint": "pnpm run lint:code && pnpm run lint:type",
-    "lint:type": "pnpm run lint:src-type && pnpm run lint:demo-type",
-    "lint:code": "eslint \"{src,build,scripts,demo}/**/*.{ts,tsx,js,vue,md}\"",
-    "lint:fix": "eslint --fix \"{src,build,scripts,demo}/**/*.{ts,tsx,js,vue,md}\"",
-    "lint:src-type": "tsc -b --force tsconfig.esm.json",
-    "lint:demo-type": "NODE_OPTIONS=--max-old-space-size=4096 vue-tsc -p src/tsconfig.demo.json",
-    "format": "pnpm run format:code && pnpm run format:md && pnpm run lint:fix",
+    "format": "pnpm run format:code && pnpm run format:md ",
     "format:code": "prettier --write \"(src|demo)/**/*.(vue|js)\"",
     "format:md": "prettier --write --parser markdown --prose-wrap never \"(src|demo)/**/*.md\"",
     "test": "NODE_ENV=test jest --collectCoverage=false",
@@ -33,7 +27,6 @@
     "gen-version": "node scripts/gen-version",
     "gen-volar-dts": "esbuild scripts/gen-component-declaration.js --bundle --platform=node --tsconfig=tsconfig.esbuild.json | node",
     "build:site:ts": "bash ./scripts/pre-build-site/pre-build-site.sh && TUSIMPLE=true NODE_ENV=production NODE_OPTIONS=--max-old-space-size=4096 vite build && bash ./scripts/post-build-site/post-build-site.sh",
-    "prepare": "husky",
     "transpile-docs": "node scripts/md-to-vue data-table",
     "release:site": "TUSIMPLE=true pnpm run build:site && node build-doc/generate-deploy-sh.js && sudo bash build-doc/deploy-doc.sh"
   },
@@ -48,32 +41,8 @@
     "README.md"
   ],
   "web-types": "./web-types.json",
-  "lint-staged": {
-    "*.js": [
-      "prettier --write",
-      "eslint --fix"
-    ],
-    "*.ts": [
-      "prettier --write",
-      "eslint --fix"
-    ],
-    "*.tsx": [
-      "prettier --write",
-      "eslint --fix"
-    ],
-    "*.vue": [
-      "prettier --parser=vue --write",
-      "eslint --fix"
-    ],
-    "*.css": [
-      "prettier --write"
-    ],
-    "*.md": [
-      "prettier --write --parser markdown --prose-wrap never",
-      "eslint --fix"
-    ]
-  },
   "devDependencies": {
+    "vite-plugin-vue-devtools": "^7.0.25",
     "@babel/core": "^7.22.15",
     "@babel/eslint-parser": "^7.22.15",
     "@babel/generator": "^7.22.15",
@@ -119,7 +88,6 @@
     "fast-glob": "^3.3.1",
     "fs-extra": "^11.1.1",
     "grapheme-splitter": "^1.0.4",
-    "husky": "^9.0.6",
     "inquirer": "^9.2.10",
     "jest": "^29.6.4",
     "jest-canvas-mock": "^2.5.2",

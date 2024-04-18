@@ -1,3 +1,4 @@
+import VueDevTools from 'vite-plugin-vue-devtools'
 const path = require('path')
 const { babel } = require('@rollup/plugin-babel')
 const createDemoPlugin = require('./build/vite-plugin-demo')
@@ -10,7 +11,7 @@ dns.setDefaultResultOrder('verbatim')
  */
 module.exports = {
   root: __dirname,
-  plugins: createDemoPlugin(),
+  plugins: [VueDevTools(), createDemoPlugin()],
   resolve: {
     // In production site build, we want to import naive-ui from node_modules
     alias:
